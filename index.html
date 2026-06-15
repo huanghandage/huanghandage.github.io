@@ -90,7 +90,7 @@
   .hero h1{font-size:clamp(40px,7vw,76px);font-weight:800;letter-spacing:-.035em;line-height:.98;margin-bottom:20px}
   .hero h1 .accent{color:var(--red)}
   .role{font-size:clamp(17px,2.1vw,21px);color:var(--text);font-weight:500;margin-bottom:8px}
-  .role b{color:var(--red-bright);font-weight:600}
+  .role b{color:var(--text);font-weight:700}
   .subrole{color:var(--muted);font-size:15.5px;margin-bottom:26px;max-width:54ch}
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:32px}
   .chip{font-family:var(--mono);font-size:12.5px;color:var(--muted);
@@ -153,10 +153,13 @@
   .pub .link{font-family:var(--mono);font-size:12.5px;color:var(--faint);white-space:nowrap;justify-self:end}
   .pub .link a{border:1px solid var(--line);padding:6px 11px;border-radius:7px;transition:all .15s;display:inline-block}
   .pub .link a:hover{border-color:var(--red);color:var(--red-bright)}
+  .pubfig{float:right;width:172px;height:auto;margin:2px 0 10px 18px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:5px;box-shadow:0 8px 24px -14px rgba(0,0,0,.8)}
+  .pubfig:hover{border-color:var(--red)}
   @media(max-width:720px){
     .pub{grid-template-columns:1fr;gap:8px}
     .pub .yr{order:-1}
     .pub .link{justify-self:start}
+    .pubfig{width:120px;margin:0 0 8px 12px}
   }
 
   /* ---------- timeline ---------- */
@@ -199,7 +202,6 @@
     <a href="#research">Research</a>
     <a href="#publications">Publications</a>
     <a href="#experience">Experience</a>
-    <a href="#teaching">Teaching</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -235,13 +237,14 @@
     <div>
       <div class="status"><span class="pulse"></span>Postdoctoral Fellow · Cornell University</div>
       <h1>Han <span class="accent">Huang</span></h1>
-      <p class="role">Condensed matter <b>theorist</b> — first-principles many-body physics of quantum materials.</p>
-      <p class="subrole">I build ab initio frameworks that predict how phonons, electrons, magnons, and excitons couple and flow — from charge-density-wave melting to quasiparticle dynamics in superconducting qubits.</p>
+      <p class="role">Condensed matter <b>theorist &amp; experimentalist</b> — quantum materials, from first principles to the beamline.</p>
+      <p class="subrole">I build ab initio many-body frameworks <em>and</em> lead synchrotron and spectroscopy campaigns — pairing theory with IXS, ARPES, XRD, and Raman to resolve how phonons, electrons, magnons, and excitons couple and flow.</p>
       <div class="chips">
         <div class="chip"><span>#</span> quantum materials</div>
         <div class="chip"><span>#</span> condensed matter theory</div>
         <div class="chip"><span>#</span> thermal transport</div>
         <div class="chip"><span>#</span> electron–phonon coupling</div>
+        <div class="chip"><span>#</span> synchrotron spectroscopy</div>
       </div>
       <div class="cta">
         <a href="#research" class="btn primary">▸ Research focus</a>
@@ -259,10 +262,10 @@
 
 <section id="research">
   <div class="eyebrow">Research Interests</div>
-  <h2>Predicting quantum matter from first principles</h2>
+  <h2>Quantum matter, from first principles to the beamline</h2>
   <div class="research-body" style="margin-top:26px">
-    <p>My work sits at the interface of <strong>condensed matter theory</strong>, <strong>computational many-body physics</strong>, and <strong>quantum materials experiment</strong>. I develop ab initio frameworks — and the large-scale HPC pipelines behind them — that turn microscopic Hamiltonians into observables that experiments can actually measure: phonon linewidths, thermal conductivities, electron–phonon coupling matrix elements, and nonequilibrium quasiparticle distributions.</p>
-    <p>A unifying thread is <strong>coupled bosonic and fermionic excitations</strong>: how phonons scatter off charge-density-wave fluctuations, how magnons dress excitons in 2D magnets, and how a single theoretical language — Green's functions, Bethe–Salpeter and Kadanoff–Baym equations — can describe them together. On the applied side, I model <strong>phonon-mediated quasiparticle poisoning in superconducting qubits</strong>, chaining energy-deposition, phonon transport, and nonequilibrium dynamics into one predictive framework.</p>
+    <p>I work on both sides of the <strong>theory–experiment interface</strong> in condensed matter physics. As a theorist, I develop ab initio many-body frameworks — and the large-scale HPC pipelines behind them — that turn microscopic Hamiltonians into measurable observables: phonon linewidths, thermal conductivities, electron–phonon coupling matrix elements, and nonequilibrium quasiparticle distributions. As an experimentalist, I lead <strong>synchrotron and spectroscopy campaigns</strong> at national facilities (APS, CHESS, LANL), distilling IXS, ARPES, XRD, Raman, and transient-thermal-grating data into the same physical quantities — so prediction and measurement meet on common ground.</p>
+    <p>A unifying thread is <strong>coupled bosonic and fermionic excitations</strong>: how phonons scatter off charge-density-wave fluctuations, how magnons dress excitons in 2D magnets, and how a single theoretical language — Green's functions, Bethe–Salpeter and Kadanoff–Baym equations — can describe them together. This theory–experiment loop has produced multiple first-observation results in charge-density-wave and 2D magnetic materials, and on the applied side underpins my modeling of <strong>phonon-mediated quasiparticle poisoning in superconducting qubits</strong>.</p>
   </div>
   <div class="focus-grid">
     <div class="card">
@@ -284,6 +287,11 @@
       <div class="num">04</div>
       <h3>Topology &amp; 2D magnetism</h3>
       <p>Topological phonon–magnon hybrid excitations and magnetically dressed exciton-polaritons in van der Waals (anti)ferromagnets.</p>
+    </div>
+    <div class="card">
+      <div class="num">05</div>
+      <h3>Synchrotron &amp; ultrafast experiment</h3>
+      <p>Leading IXS, ARPES, XRD, Raman, and transient-thermal-grating campaigns at APS, CHESS, and LANL — measuring phonon dispersions, linewidths, and order parameters to validate theory.</p>
     </div>
   </div>
 </section>
@@ -338,6 +346,7 @@
     <div class="pub">
       <div class="yr">2024</div>
       <div class="body">
+        <img class="pubfig" src="https://ztgroup.org/wp-content/uploads/2024/08/image.png?w=420" alt="GeTe key figure" loading="lazy">
         <h3><a href="https://doi.org/10.1038/s41467-024-51377-8" target="_blank" rel="noopener">Anomalous lattice thermal conductivity increase with temperature in cubic GeTe correlated with strengthening of second-nearest neighbor bonds</a></h3>
         <div class="authors">Kielar, S., Li, C., <span class="me">Huang, H.</span>, Hu, R., Slebodnick, C., Alatas, A., Tian, Z.</div>
         <div class="venue"><span class="tag">Nature Communications</span><span class="note">15, 6981</span></div>
@@ -348,6 +357,7 @@
     <div class="pub">
       <div class="yr">2024</div>
       <div class="body">
+        <img class="pubfig" src="https://ztgroup.org/wp-content/uploads/2024/02/screen-shot-2024-02-20-at-1.43.41-pm.png?w=420" alt="Superconductor quasiparticle dynamics figure" loading="lazy">
         <h3><a href="https://doi.org/10.1116/5.0188992" target="_blank" rel="noopener">Ab initio calculation of nonequilibrium quasiparticle–phonon dynamics in superconductors</a></h3>
         <div class="authors"><span class="me">Huang, H.*</span>, Kielar, S., Tian, Z.</div>
         <div class="venue"><span class="tag">AVS Quantum Science</span><span class="note">6, 016201 · Editor's Pick</span></div>
@@ -368,6 +378,7 @@
     <div class="pub">
       <div class="yr">2021</div>
       <div class="body">
+        <img class="pubfig" src="https://ztgroup.org/wp-content/uploads/2021/07/picturen4.png?w=420" alt="Topological phonon-magnon band structure figure" loading="lazy">
         <h3><a href="https://doi.org/10.1103/PhysRevB.104.064305" target="_blank" rel="noopener">Topological phonon–magnon hybrid excitations in a two-dimensional honeycomb ferromagnet</a></h3>
         <div class="authors"><span class="me">Huang, H.*</span>, Tian, Z.</div>
         <div class="venue"><span class="tag">Physical Review B</span><span class="note">104, 064305</span></div>
@@ -403,26 +414,24 @@
   </div>
 </section>
 
-<section id="teaching">
-  <div class="eyebrow">Teaching &amp; Mentoring</div>
-  <h2>In the classroom</h2>
+<section id="honors">
+  <div class="eyebrow">Honors &amp; Recognition</div>
+  <h2>Awards &amp; selected programs</h2>
   <div class="cols">
     <div>
-      <h3>// teaching</h3>
+      <h3>// honors &amp; training</h3>
       <ul>
-        <li><b>Lead Teaching Assistant — Statics &amp; Mechanics of Solids</b><span>ENGRD 2020 · Cornell · 12 sections</span></li>
-        <li><b>Graduate TA — Intermediate Dynamics</b><span>MAE 5730 · Cornell · Lagrangian &amp; constrained dynamics</span></li>
-        <li><b>Teaching Fellow — Semiconductor Device Physics</b><span>GEC Academy · quantum tech &amp; spintronics</span></li>
-        <li><b>Teaching Fellow — Electromagnetism &amp; Circuit Theory</b><span>GEC Academy · relativity &amp; gauge theory</span></li>
+        <li><b>US Quantum Information Science Summer School</b><span>Oak Ridge National Laboratory · 2024</span></li>
+        <li><b>26th National School on Neutron &amp; X-Ray Scattering</b><span>Argonne / Oak Ridge · 2023</span></li>
+        <li><b>Editor's Pick — AVS Quantum Science</b><span>quasiparticle–phonon dynamics in superconductors · 2024</span></li>
       </ul>
     </div>
     <div>
-      <h3>// honors &amp; service</h3>
+      <h3>// service</h3>
       <ul>
-        <li><b>US Quantum Information Science Summer School</b><span>Oak Ridge · 2024</span></li>
-        <li><b>National School on Neutron &amp; X-Ray Scattering</b><span>26th cohort · 2023</span></li>
-        <li><b>Member, American Physical Society</b><span>2024 — present</span></li>
-        <li><b>Graduate mentor</b><span>ab initio MD &amp; spin–phonon coupling in CrSBr</span></li>
+        <li><b>Member, American Physical Society (APS)</b><span>2024 — present</span></li>
+        <li><b>Beamtime lead &amp; cross-institution coordinator</b><span>APS · CHESS · LANL campaigns</span></li>
+        <li><b>Graduate research mentor</b><span>ab initio MD &amp; spin–phonon coupling in CrSBr</span></li>
       </ul>
     </div>
   </div>
@@ -439,7 +448,7 @@
 </section>
 
 <footer>
-  © 2026 Han Huang · Condensed Matter Theory · Cornell University <span class="red">●</span> built with too much caffeine
+  © 2026 Han Huang · Condensed Matter Physics · Cornell University <span class="red">●</span> built with too much caffeine
 </footer>
 
 </body>
