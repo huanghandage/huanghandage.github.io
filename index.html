@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Han Huang — Condensed Matter Theory</title>
+<meta name="description" content="Han Huang — postdoctoral physicist at Cornell University working on quantum materials, condensed matter theory, and thermal transport.">
+<style>
+  :root{
+    --bg:#0c0c0e;
+    --bg2:#111114;
+    --surface:#16161a;
+    --surface2:#1c1c22;
+    --line:#2a2a32;
+    --text:#e9e9ec;
+    --muted:#9a9aa6;
+    --faint:#6c6c78;
+    --red:#d3243b;
+    --red-bright:#ef4358;
+    --red-dim:#7e1622;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:#fff}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(20px,5vw,64px);
+    background:rgba(12,12,14,.78);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.02em}
+  .brand .dot{color:var(--red)}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{font-family:var(--mono);font-size:13px;color:var(--muted);transition:color .15s}
+  .navlinks a:hover{color:var(--red-bright)}
+  @media(max-width:720px){.navlinks{display:none}}
+
+  /* ---------- layout ---------- */
+  section{padding:clamp(64px,9vw,120px) clamp(20px,5vw,64px);max-width:1080px;margin:0 auto}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--red-bright);margin-bottom:18px;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--red)}
+  h2{font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+  .lede{color:var(--muted);max-width:62ch;font-size:16.5px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:88vh;display:flex;align-items:center;
+    padding:clamp(40px,6vw,80px) clamp(20px,5vw,64px);
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none}
+  .hero-grid{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(transparent 0,transparent calc(100% - 1px),rgba(211,36,59,.05) 100%),
+      linear-gradient(90deg,transparent 0,transparent calc(100% - 1px),rgba(211,36,59,.05) 100%);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 80% 70% at 30% 40%,#000 30%,transparent 80%);
+  }
+  .hero-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1.55fr .9fr;gap:clamp(28px,5vw,72px);align-items:center}
+  @media(max-width:840px){.hero-inner{grid-template-columns:1fr;text-align:left}}
+  .status{
+    font-family:var(--mono);font-size:12.5px;color:var(--muted);
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:26px;
+    padding:6px 13px;border:1px solid var(--line);border-radius:100px;background:var(--surface);
+  }
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(211,36,59,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(211,36,59,.55)}70%{box-shadow:0 0 0 9px rgba(211,36,59,0)}100%{box-shadow:0 0 0 0 rgba(211,36,59,0)}}
+  .hero h1{font-size:clamp(40px,7vw,76px);font-weight:800;letter-spacing:-.035em;line-height:.98;margin-bottom:20px}
+  .hero h1 .accent{color:var(--red)}
+  .role{font-size:clamp(17px,2.1vw,21px);color:var(--text);font-weight:500;margin-bottom:8px}
+  .role b{color:var(--red-bright);font-weight:600}
+  .subrole{color:var(--muted);font-size:15.5px;margin-bottom:26px;max-width:54ch}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:32px}
+  .chip{font-family:var(--mono);font-size:12.5px;color:var(--muted);
+    padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+  .chip span{color:var(--red-bright)}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    font-family:var(--mono);font-size:13.5px;padding:11px 20px;border-radius:8px;
+    border:1px solid var(--line);color:var(--text);transition:all .16s;display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn:hover{border-color:var(--red);color:var(--red-bright);transform:translateY(-1px)}
+  .btn.primary{background:var(--red);border-color:var(--red);color:#fff}
+  .btn.primary:hover{background:var(--red-bright);border-color:var(--red-bright);color:#fff}
+
+  .portrait-wrap{justify-self:center;position:relative}
+  .portrait{
+    width:clamp(190px,24vw,260px);height:clamp(190px,24vw,260px);border-radius:50%;
+    object-fit:cover;border:1px solid var(--line);
+    box-shadow:0 0 0 6px rgba(211,36,59,.06),0 24px 60px -20px rgba(0,0,0,.7);
+    filter:grayscale(.15) contrast(1.03);
+  }
+  .ring{position:absolute;inset:-18px;border-radius:50%;border:1px dashed rgba(211,36,59,.35);animation:spin 38s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .portrait-tag{
+    position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap;
+    background:var(--surface);border:1px solid var(--line);padding:4px 11px;border-radius:100px;
+  }
+
+  /* ---------- research ---------- */
+  .focus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:40px}
+  .card{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 22px;
+    transition:border-color .18s,transform .18s;position:relative;overflow:hidden;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;width:3px;height:0;background:var(--red);transition:height .25s}
+  .card:hover{border-color:#3a3a44;transform:translateY(-3px)}
+  .card:hover::before{height:100%}
+  .card .num{font-family:var(--mono);font-size:12px;color:var(--red);letter-spacing:.1em}
+  .card h3{font-size:17.5px;margin:10px 0 8px;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:14.5px}
+  .research-body p{margin-bottom:18px;font-size:16.5px;color:#c7c7d0}
+  .research-body strong{color:var(--text);font-weight:600}
+
+  /* ---------- publications ---------- */
+  .pubs{margin-top:38px;border-top:1px solid var(--line)}
+  .pub{
+    display:grid;grid-template-columns:64px 1fr auto;gap:20px;align-items:baseline;
+    padding:22px 4px;border-bottom:1px solid var(--line);transition:background .15s;
+  }
+  .pub:hover{background:rgba(255,255,255,.012)}
+  .pub .yr{font-family:var(--mono);font-size:13px;color:var(--faint)}
+  .pub .body h3{font-size:16.5px;font-weight:600;letter-spacing:-.01em;line-height:1.4;margin-bottom:7px}
+  .pub .body h3 a:hover{color:var(--red-bright)}
+  .pub .authors{font-size:13.5px;color:var(--muted);margin-bottom:6px}
+  .pub .authors .me{color:var(--text);font-weight:600;border-bottom:1px solid var(--red-dim)}
+  .venue{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .venue .tag{color:var(--red-bright);border:1px solid var(--red-dim);border-radius:5px;padding:2px 8px;font-size:11px}
+  .venue .note{color:var(--faint)}
+  .pub .link{font-family:var(--mono);font-size:12.5px;color:var(--faint);white-space:nowrap;justify-self:end}
+  .pub .link a{border:1px solid var(--line);padding:6px 11px;border-radius:7px;transition:all .15s;display:inline-block}
+  .pub .link a:hover{border-color:var(--red);color:var(--red-bright)}
+  @media(max-width:720px){
+    .pub{grid-template-columns:1fr;gap:8px}
+    .pub .yr{order:-1}
+    .pub .link{justify-self:start}
+  }
+
+  /* ---------- timeline ---------- */
+  .timeline{margin-top:40px;position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .tl{position:relative;padding-bottom:34px}
+  .tl::before{content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--red)}
+  .tl .when{font-family:var(--mono);font-size:12.5px;color:var(--red-bright);margin-bottom:5px}
+  .tl h3{font-size:17.5px;letter-spacing:-.01em;margin-bottom:3px}
+  .tl .where{color:var(--muted);font-size:14px;margin-bottom:9px}
+  .tl p{color:#b6b6c0;font-size:14.5px;max-width:70ch}
+
+  /* ---------- two-col ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px}
+  @media(max-width:720px){.cols{grid-template-columns:1fr;gap:30px}}
+  .cols h3{font-size:16px;font-family:var(--mono);color:var(--red-bright);margin-bottom:16px;letter-spacing:.04em}
+  .cols ul{list-style:none}
+  .cols li{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:#c2c2cc}
+  .cols li b{color:var(--text);font-weight:600;display:block;margin-bottom:2px}
+  .cols li span{font-family:var(--mono);font-size:12px;color:var(--faint)}
+
+  /* ---------- contact ---------- */
+  .contact{text-align:center;border-top:1px solid var(--line)}
+  .contact h2{margin-bottom:14px}
+  .contact .lede{margin:0 auto 34px}
+  .links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+  footer{
+    text-align:center;padding:34px 20px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--faint);
+  }
+  footer .red{color:var(--red)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#top" class="brand">han_huang<span class="dot">.</span></a>
+  <div class="navlinks">
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <!-- phonon dispersion motif -->
+  <svg class="hero-bg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#d3243b" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#d3243b" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#d3243b" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#g)" stroke-width="1.2">
+      <path d="M120,470 C300,460 360,250 600,250 C840,250 900,460 1080,470"/>
+      <path d="M120,470 C300,455 380,180 600,180 C820,180 900,455 1080,470"/>
+      <path d="M120,470 C320,468 420,330 600,330 C780,330 880,468 1080,470"/>
+      <path d="M120,470 C300,470 380,110 600,110 C820,110 900,470 1080,470"/>
+    </g>
+    <g stroke="rgba(211,36,59,.25)" stroke-width="1" stroke-dasharray="3 6">
+      <line x1="600" y1="80" x2="600" y2="500"/>
+      <line x1="120" y1="470" x2="1080" y2="470"/>
+    </g>
+    <g fill="#d3243b">
+      <circle cx="600" cy="110" r="3"/><circle cx="600" cy="180" r="3"/>
+      <circle cx="600" cy="250" r="3"/><circle cx="600" cy="330" r="3"/>
+    </g>
+  </svg>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="status"><span class="pulse"></span>Postdoctoral Fellow · Cornell University</div>
+      <h1>Han <span class="accent">Huang</span></h1>
+      <p class="role">Condensed matter <b>theorist</b> — first-principles many-body physics of quantum materials.</p>
+      <p class="subrole">I build ab initio frameworks that predict how phonons, electrons, magnons, and excitons couple and flow — from charge-density-wave melting to quasiparticle dynamics in superconducting qubits.</p>
+      <div class="chips">
+        <div class="chip"><span>#</span> quantum materials</div>
+        <div class="chip"><span>#</span> condensed matter theory</div>
+        <div class="chip"><span>#</span> thermal transport</div>
+        <div class="chip"><span>#</span> electron–phonon coupling</div>
+      </div>
+      <div class="cta">
+        <a href="#research" class="btn primary">▸ Research focus</a>
+        <a href="#publications" class="btn">Publications</a>
+        <a href="https://scholar.google.com/citations?user=Zrgks-0AAAAJ" target="_blank" rel="noopener" class="btn">Google Scholar ↗</a>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="ring"></div>
+      <img class="portrait" src="data:image/jpeg;base64,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" alt="Han Huang">
+      <div class="portrait-tag">Ithaca, NY · CMT</div>
+    </div>
+  </div>
+</header>
+
+<section id="research">
+  <div class="eyebrow">Research Interests</div>
+  <h2>Predicting quantum matter from first principles</h2>
+  <div class="research-body" style="margin-top:26px">
+    <p>My work sits at the interface of <strong>condensed matter theory</strong>, <strong>computational many-body physics</strong>, and <strong>quantum materials experiment</strong>. I develop ab initio frameworks — and the large-scale HPC pipelines behind them — that turn microscopic Hamiltonians into observables that experiments can actually measure: phonon linewidths, thermal conductivities, electron–phonon coupling matrix elements, and nonequilibrium quasiparticle distributions.</p>
+    <p>A unifying thread is <strong>coupled bosonic and fermionic excitations</strong>: how phonons scatter off charge-density-wave fluctuations, how magnons dress excitons in 2D magnets, and how a single theoretical language — Green's functions, Bethe–Salpeter and Kadanoff–Baym equations — can describe them together. On the applied side, I model <strong>phonon-mediated quasiparticle poisoning in superconducting qubits</strong>, chaining energy-deposition, phonon transport, and nonequilibrium dynamics into one predictive framework.</p>
+  </div>
+  <div class="focus-grid">
+    <div class="card">
+      <div class="num">01</div>
+      <h3>Charge-density-wave physics</h3>
+      <p>Microscopic theory of acoustic-phonon scattering by CDW fluctuations, and the weak first-order melting revealed by anomalous thermal transport in 2H-TaSe₂.</p>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <h3>Electron–phonon coupling</h3>
+      <p>GW-corrected, anisotropic, temperature-dependent coupling in Weyl semimetals and ultrawide-bandgap semiconductors — tied directly to spectroscopy.</p>
+    </div>
+    <div class="card">
+      <div class="num">03</div>
+      <h3>Superconducting qubits</h3>
+      <p>Nonequilibrium quasiparticle–phonon dynamics from first principles, toward an end-to-end model of qubit decoherence and poisoning.</p>
+    </div>
+    <div class="card">
+      <div class="num">04</div>
+      <h3>Topology &amp; 2D magnetism</h3>
+      <p>Topological phonon–magnon hybrid excitations and magnetically dressed exciton-polaritons in van der Waals (anti)ferromagnets.</p>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="eyebrow">Selected Publications</div>
+  <h2>Papers &amp; preprints</h2>
+  <p class="lede" style="margin-top:10px">Full list on <a href="https://scholar.google.com/citations?user=Zrgks-0AAAAJ" target="_blank" rel="noopener" style="color:var(--red-bright)">Google Scholar ↗</a>. <span style="font-family:var(--mono);font-size:13px">(*) = corresponding / lead author.</span></p>
+
+  <div class="pubs">
+
+    <div class="pub">
+      <div class="yr">2026</div>
+      <div class="body">
+        <h3><a href="https://arxiv.org/abs/2604.17655" target="_blank" rel="noopener">Microscopic Theory of Acoustic Phonon Scattering by Charge-Density-Wave Fluctuations</a></h3>
+        <div class="authors"><span class="me">Huang, H.*</span></div>
+        <div class="venue"><span class="tag">arXiv</span><span class="note">2604.17655 · preprint</span></div>
+      </div>
+      <div class="link"><a href="https://arxiv.org/abs/2604.17655" target="_blank" rel="noopener">arXiv ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2026</div>
+      <div class="body">
+        <h3><a href="https://arxiv.org/abs/2603.15915" target="_blank" rel="noopener">Anomalous Thermal Transport Reveals Weak First-Order Melting of Charge Density Waves in 2H-TaSe₂</a></h3>
+        <div class="authors"><span class="me">Huang, H.*</span>, Dai, J., Christiansen-Salameh, J., Alvarez, G., Ma, D., Schnitzer, N., Ni, D., Alatas, A., Medina, M., Slebodnick, C., Cava, R., Muller, D., Tian, Z.</div>
+        <div class="venue"><span class="tag">arXiv</span><span class="note">2603.15915 · submitted to Nature Physics</span></div>
+      </div>
+      <div class="link"><a href="https://arxiv.org/abs/2603.15915" target="_blank" rel="noopener">arXiv ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2026</div>
+      <div class="body">
+        <h3>Experimentally Determined Anisotropic and Temperature-Dependent Electron–Phonon Coupling in the Weyl Semimetal WTe₂</h3>
+        <div class="authors"><span class="me">Huang, H.*</span>, Dai, J., Alvarez, G., Christiansen-Salameh, J., Ni, D., Alatas, A., Medina, M., Slebodnick, C., Cava, R., Tian, Z.</div>
+        <div class="venue"><span class="tag">in revision</span><span class="note">Nature Communications</span></div>
+      </div>
+      <div class="link"><a href="https://scholar.google.com/citations?user=Zrgks-0AAAAJ" target="_blank" rel="noopener">Scholar ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2025</div>
+      <div class="body">
+        <h3>Thermal Conductivity of Wurtzite Aluminum Nitride Under External Electric Field</h3>
+        <div class="authors">Christiansen-Salameh, J., Kielar, S., <span class="me">Huang, H.</span>, Tian, Z.</div>
+        <div class="venue"><span class="tag">in review</span><span class="note">npj Computational Materials</span></div>
+      </div>
+      <div class="link"><a href="https://scholar.google.com/citations?user=Zrgks-0AAAAJ" target="_blank" rel="noopener">Scholar ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2024</div>
+      <div class="body">
+        <h3><a href="https://doi.org/10.1038/s41467-024-51377-8" target="_blank" rel="noopener">Anomalous lattice thermal conductivity increase with temperature in cubic GeTe correlated with strengthening of second-nearest neighbor bonds</a></h3>
+        <div class="authors">Kielar, S., Li, C., <span class="me">Huang, H.</span>, Hu, R., Slebodnick, C., Alatas, A., Tian, Z.</div>
+        <div class="venue"><span class="tag">Nature Communications</span><span class="note">15, 6981</span></div>
+      </div>
+      <div class="link"><a href="https://doi.org/10.1038/s41467-024-51377-8" target="_blank" rel="noopener">DOI ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2024</div>
+      <div class="body">
+        <h3><a href="https://doi.org/10.1116/5.0188992" target="_blank" rel="noopener">Ab initio calculation of nonequilibrium quasiparticle–phonon dynamics in superconductors</a></h3>
+        <div class="authors"><span class="me">Huang, H.*</span>, Kielar, S., Tian, Z.</div>
+        <div class="venue"><span class="tag">AVS Quantum Science</span><span class="note">6, 016201 · Editor's Pick</span></div>
+      </div>
+      <div class="link"><a href="https://doi.org/10.1116/5.0188992" target="_blank" rel="noopener">DOI ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2024</div>
+      <div class="body">
+        <h3><a href="https://arxiv.org/abs/2412.05446" target="_blank" rel="noopener">AdS/CFT Duality and Holographic Renormalization Group: A Review</a></h3>
+        <div class="authors"><span class="me">Huang, H.*</span></div>
+        <div class="venue"><span class="tag">arXiv</span><span class="note">2412.05446 · review</span></div>
+      </div>
+      <div class="link"><a href="https://arxiv.org/abs/2412.05446" target="_blank" rel="noopener">arXiv ↗</a></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2021</div>
+      <div class="body">
+        <h3><a href="https://doi.org/10.1103/PhysRevB.104.064305" target="_blank" rel="noopener">Topological phonon–magnon hybrid excitations in a two-dimensional honeycomb ferromagnet</a></h3>
+        <div class="authors"><span class="me">Huang, H.*</span>, Tian, Z.</div>
+        <div class="venue"><span class="tag">Physical Review B</span><span class="note">104, 064305</span></div>
+      </div>
+      <div class="link"><a href="https://doi.org/10.1103/PhysRevB.104.064305" target="_blank" rel="noopener">DOI ↗</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="eyebrow">Experience</div>
+  <h2>Research trajectory</h2>
+  <div class="timeline">
+    <div class="tl">
+      <div class="when">2025 — present</div>
+      <h3>Postdoctoral Fellow</h3>
+      <div class="where">Cornell University · Sibley School of Mechanical &amp; Aerospace Engineering (Tian Group)</div>
+      <p>Developing spinor Bethe–Salpeter (T-matrix) and magnetic force-theorem frameworks for a unified ab initio treatment of coupled excitons, magnons, and phonons. Running DFT, GW-BSE, noncollinear-SOC and TB2J pipelines on national HPC systems, and building an end-to-end model of phonon–quasiparticle interactions in superconducting qubits.</p>
+    </div>
+    <div class="tl">
+      <div class="when">2019 — 2025</div>
+      <h3>Ph.D. &amp; Research Associate</h3>
+      <div class="where">Cornell University · Mechanical &amp; Aerospace Engineering (Nanoscience &amp; Theoretical Physics)</div>
+      <p>Led multi-facility synchrotron and spectroscopy campaigns (APS, CHESS, LANL), turning IXS, ARPES, XRD and Raman data into phonon dispersions, electron–phonon couplings and order parameters — yielding multiple first-observation results in CDW and 2D magnetic materials, integrated with first-principles theory.</p>
+    </div>
+    <div class="tl">
+      <div class="when">2015 — 2019</div>
+      <h3>B.S. in Physics</h3>
+      <div class="where">University of California, San Diego</div>
+      <p>Foundations in theoretical physics; co-founder &amp; president of the UCSD Piano Society.</p>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="eyebrow">Teaching &amp; Mentoring</div>
+  <h2>In the classroom</h2>
+  <div class="cols">
+    <div>
+      <h3>// teaching</h3>
+      <ul>
+        <li><b>Lead Teaching Assistant — Statics &amp; Mechanics of Solids</b><span>ENGRD 2020 · Cornell · 12 sections</span></li>
+        <li><b>Graduate TA — Intermediate Dynamics</b><span>MAE 5730 · Cornell · Lagrangian &amp; constrained dynamics</span></li>
+        <li><b>Teaching Fellow — Semiconductor Device Physics</b><span>GEC Academy · quantum tech &amp; spintronics</span></li>
+        <li><b>Teaching Fellow — Electromagnetism &amp; Circuit Theory</b><span>GEC Academy · relativity &amp; gauge theory</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>// honors &amp; service</h3>
+      <ul>
+        <li><b>US Quantum Information Science Summer School</b><span>Oak Ridge · 2024</span></li>
+        <li><b>National School on Neutron &amp; X-Ray Scattering</b><span>26th cohort · 2023</span></li>
+        <li><b>Member, American Physical Society</b><span>2024 — present</span></li>
+        <li><b>Graduate mentor</b><span>ab initio MD &amp; spin–phonon coupling in CrSBr</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="eyebrow" style="justify-content:center">Contact</div>
+  <h2>Let's talk physics</h2>
+  <p class="lede">Open to collaborations on quantum materials, many-body theory, and the theory–experiment interface.</p>
+  <div class="links">
+    <a href="mailto:hh697@cornell.edu" class="btn primary">✉ hh697@cornell.edu</a>
+    <a href="https://scholar.google.com/citations?user=Zrgks-0AAAAJ" target="_blank" rel="noopener" class="btn">Google Scholar ↗</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Han Huang · Condensed Matter Theory · Cornell University <span class="red">●</span> built with too much caffeine
+</footer>
+
+</body>
+</html>
