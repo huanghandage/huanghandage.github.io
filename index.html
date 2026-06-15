@@ -91,7 +91,9 @@
   .hero h1 .accent{color:var(--red)}
   .role{font-size:clamp(17px,2.1vw,21px);color:var(--text);font-weight:500;margin-bottom:8px}
   .role b{color:var(--text);font-weight:700}
-  .subrole{color:var(--muted);font-size:15.5px;margin-bottom:26px;max-width:54ch}
+  .subrole{color:var(--muted);font-size:15.5px;margin-bottom:14px;max-width:56ch}
+  .interests{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 26px;max-width:56ch;line-height:1.7}
+  .interests b{color:var(--muted);font-weight:500}
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:32px}
   .chip{font-family:var(--mono);font-size:12.5px;color:var(--muted);
     padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
@@ -193,6 +195,20 @@
     font-family:var(--mono);font-size:12px;color:var(--faint);
   }
   footer .red{color:var(--red)}
+  /* ---------- synergy figure ---------- */
+  .synergy{margin:34px 0 8px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--surface),rgba(22,22,26,0));padding:26px clamp(8px,3vw,34px) 18px}
+  .synergy svg{width:100%;height:auto;display:block;max-width:1000px;margin:0 auto}
+  .syn-glyph{font-family:Georgia,"Times New Roman",serif;font-size:27px;fill:var(--text)}
+  .syn-stage{font-family:var(--mono);font-size:13px;letter-spacing:.2em;fill:var(--red-bright);font-weight:600}
+  .syn-item{font-family:var(--mono);font-size:11.5px;fill:var(--muted)}
+  .syn-loop{font-family:var(--mono);font-size:11px;letter-spacing:.14em;fill:var(--faint)}
+  .syn-cap{font-family:var(--mono);font-size:12px;color:var(--faint);text-align:center;margin:14px auto 0;max-width:60ch;letter-spacing:.02em}
+  /* ---------- coupled-excitations figure ---------- */
+  .coupledfig{float:right;width:240px;margin:4px 0 14px 26px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:14px 14px 10px}
+  .coupledfig svg{width:100%;height:auto;display:block}
+  .cx-node{font-family:var(--mono);font-size:11px;fill:var(--text);font-weight:600}
+  .cx-cap{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red-bright);text-align:center;margin-top:8px;text-transform:uppercase}
+  @media(max-width:600px){.coupledfig{float:none;width:100%;max-width:300px;margin:8px auto 18px}}
 </style>
 </head>
 <body>
@@ -235,8 +251,9 @@
     <div>
       <div class="status"><span class="pulse"></span>Postdoctoral Fellow · Cornell University</div>
       <h1>Han <span class="accent">Huang</span></h1>
-      <p class="role">Condensed matter <b>theorist &amp; experimentalist</b> — quantum materials, from first principles to the beamline.</p>
-      <p class="subrole">I build ab initio many-body frameworks <em>and</em> lead synchrotron and spectroscopy campaigns — pairing theory with IXS, ARPES, XRD, and Raman to resolve how phonons, electrons, magnons, and excitons couple and flow.</p>
+      <p class="role">Applied condensed matter <b>theory</b> — connecting quantum many-body theory, experiment, and devices.</p>
+      <p class="subrole">I carry problems across the full chain: ab initio and nonequilibrium many-body theory → validation by thermal, synchrotron, and Raman experiments → impact on real devices like ultrawide-bandgap electronics and superconducting qubits.</p>
+      <p class="interests">Beyond physics: <b>pianist &amp; certified piano technician</b> · former Cornell Archery Club officer · film-photography enthusiast.</p>
       <div class="chips">
         <div class="chip"><span>#</span> quantum materials</div>
         <div class="chip"><span>#</span> condensed matter theory</div>
@@ -259,10 +276,79 @@
 </header>
 
 <section id="research">
-  <div class="eyebrow">Research Interests</div>
-  <h2>Quantum matter, from first principles to the beamline</h2>
+  <div class="eyebrow">Research</div>
+  <h2>Applied condensed matter theory</h2>
+  <p class="lede" style="margin-top:12px">My research runs as one loop — quantum many-body and ab initio <strong style="color:var(--text)">theory</strong> guiding the <strong style="color:var(--text)">experiments</strong> that test it, both pointed at the <strong style="color:var(--text)">devices</strong> that use it.</p>
+
+  <div class="synergy">
+    <svg viewBox="0 0 1100 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Theory to experiment to device synergy loop">
+      <defs>
+        <marker id="ah" markerWidth="10" markerHeight="10" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="#d3243b"/></marker>
+        <marker id="ahb" markerWidth="10" markerHeight="10" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6.5,3 L0,6 Z" fill="rgba(211,36,59,.5)"/></marker>
+      </defs>
+      <!-- feedback loop -->
+      <path d="M912,130 C 912,250 720,270 550,270 C 380,270 232,252 190,134" fill="none" stroke="rgba(211,36,59,.32)" stroke-width="1.4" stroke-dasharray="5 7" marker-end="url(#ahb)"/>
+      <text x="550" y="292" text-anchor="middle" class="syn-loop">predict · validate · redesign</text>
+      <!-- forward arrows -->
+      <line x1="232" y1="92" x2="502" y2="92" stroke="#d3243b" stroke-width="1.6" marker-end="url(#ah)"/>
+      <line x1="598" y1="92" x2="868" y2="92" stroke="#d3243b" stroke-width="1.6" marker-end="url(#ah)"/>
+      <!-- THEORY -->
+      <g>
+        <circle cx="185" cy="92" r="34" fill="rgba(211,36,59,.06)" stroke="rgba(211,36,59,.5)" stroke-width="1.3"/>
+        <text x="185" y="102" text-anchor="middle" class="syn-glyph" font-style="italic">&#x124;</text>
+        <text x="185" y="160" text-anchor="middle" class="syn-stage">THEORY</text>
+        <text x="185" y="185" text-anchor="middle" class="syn-item">quantum many-body</text>
+        <text x="185" y="204" text-anchor="middle" class="syn-item">ab initio · DFT · GW-BSE</text>
+        <text x="185" y="223" text-anchor="middle" class="syn-item">nonequilibrium stat. mech.</text>
+      </g>
+      <!-- EXPERIMENT -->
+      <g>
+        <circle cx="550" cy="92" r="34" fill="rgba(211,36,59,.06)" stroke="rgba(211,36,59,.5)" stroke-width="1.3"/>
+        <path d="M534,92 c4,-11 8,-11 12,0 c4,11 8,11 12,0" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+        <text x="550" y="160" text-anchor="middle" class="syn-stage">EXPERIMENT</text>
+        <text x="550" y="185" text-anchor="middle" class="syn-item">thermal transport</text>
+        <text x="550" y="204" text-anchor="middle" class="syn-item">synchrotron · IXS · ARPES</text>
+        <text x="550" y="223" text-anchor="middle" class="syn-item">Raman · XRD</text>
+      </g>
+      <!-- DEVICE -->
+      <g>
+        <circle cx="915" cy="92" r="34" fill="rgba(211,36,59,.06)" stroke="rgba(211,36,59,.5)" stroke-width="1.3"/>
+        <rect x="903" y="83" width="24" height="18" rx="2.5" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+        <path d="M908,83 v-5 M915,83 v-5 M922,83 v-5 M908,101 v5 M915,101 v5 M922,101 v5 M903,88 h-5 M903,96 h-5 M927,88 h5 M927,96 h5" stroke="var(--text)" stroke-width="1.1"/>
+        <text x="915" y="160" text-anchor="middle" class="syn-stage">DEVICE</text>
+        <text x="915" y="185" text-anchor="middle" class="syn-item">ultrawide-bandgap</text>
+        <text x="915" y="204" text-anchor="middle" class="syn-item">superconducting qubits</text>
+        <text x="915" y="223" text-anchor="middle" class="syn-item">2D-material electronics</text>
+      </g>
+    </svg>
+    <p class="syn-cap">One predictive loop: theory → experiment → device, and back.</p>
+  </div>
+
   <div class="research-body" style="margin-top:26px">
     <p>I work on both sides of the <strong>theory–experiment interface</strong> in condensed matter physics. As a theorist, I develop ab initio many-body frameworks — and the large-scale HPC pipelines behind them — that turn microscopic Hamiltonians into measurable observables: phonon linewidths, thermal conductivities, electron–phonon coupling matrix elements, and nonequilibrium quasiparticle distributions. As an experimentalist, I lead <strong>synchrotron and spectroscopy campaigns</strong> at national facilities (APS, CHESS, LANL), distilling IXS, ARPES, XRD, Raman, and transient-thermal-grating data into the same physical quantities — so prediction and measurement meet on common ground.</p>
+    <div class="coupledfig">
+      <svg viewBox="0 0 280 210" role="img" aria-label="Coupled phonon, magnon, and exciton excitations">
+        <line x1="128" y1="68" x2="64" y2="140" stroke="rgba(211,36,59,.45)" stroke-width="1.3"/>
+        <line x1="152" y1="68" x2="216" y2="140" stroke="rgba(211,36,59,.45)" stroke-width="1.3"/>
+        <line x1="76" y1="158" x2="204" y2="158" stroke="rgba(211,36,59,.45)" stroke-width="1.3"/>
+        <g>
+          <circle cx="140" cy="48" r="24" fill="rgba(211,36,59,.07)" stroke="rgba(211,36,59,.55)" stroke-width="1.2"/>
+          <path d="M127,48 c3.5,-9 7,-9 10,0 c3.5,9 7,9 10,0" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+          <text x="140" y="18" text-anchor="middle" class="cx-node">phonon</text>
+        </g>
+        <g>
+          <circle cx="52" cy="158" r="24" fill="rgba(211,36,59,.07)" stroke="rgba(211,36,59,.55)" stroke-width="1.2"/>
+          <path d="M52,170 V146 M47,153 L52,146 L57,153" stroke="#ef4358" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="52" y="200" text-anchor="middle" class="cx-node">magnon</text>
+        </g>
+        <g>
+          <circle cx="228" cy="158" r="24" fill="rgba(211,36,59,.07)" stroke="rgba(211,36,59,.55)" stroke-width="1.2"/>
+          <text x="228" y="163" text-anchor="middle" style="font-family:Georgia,serif;font-style:italic;font-size:14px;fill:var(--text)">e–h</text>
+          <text x="228" y="200" text-anchor="middle" class="cx-node">exciton</text>
+        </g>
+      </svg>
+      <div class="cx-cap">coupled excitations</div>
+    </div>
     <p>A unifying thread is <strong>coupled bosonic and fermionic excitations</strong>: how phonons scatter off charge-density-wave fluctuations, how magnons dress excitons in 2D magnets, and how a single theoretical language — Green's functions, Bethe–Salpeter and Kadanoff–Baym equations — can describe them together. This theory–experiment loop has produced multiple first-observation results in charge-density-wave and 2D magnetic materials, and on the applied side underpins my modeling of <strong>phonon-mediated quasiparticle poisoning in superconducting qubits</strong>.</p>
   </div>
   <div class="focus-grid">
@@ -412,6 +498,7 @@
   <p class="lede">Open to collaborations on quantum materials, many-body theory, and the theory–experiment interface.</p>
   <div class="links">
     <a href="https://scholar.google.com/citations?user=Zrgks-0AAAAJ" target="_blank" rel="noopener" class="btn primary">Google Scholar ↗</a>
+    <a href="https://www.linkedin.com/in/huanghan1911" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
   </div>
 </section>
 
