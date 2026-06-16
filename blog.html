@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Han Huang · Blog</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Physics insights, derivations, and lecture notes by Han Huang.">
+<!-- LaTeX rendering: write $inline$ and $$display$$ math anywhere in a post -->
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},svg:{fontCache:'global'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+<style>
+  :root{
+    --bg:#0c0c0e;--surface:#16161a;--line:#2a2a32;--text:#e9e9ec;--muted:#9a9aa6;--faint:#6c6c78;
+    --red:#d3243b;--red-bright:#ef4358;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:#fff}
+  nav.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,5vw,64px);background:rgba(12,12,14,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.02em}
+  .brand .dot{color:var(--red)}
+  .navlinks{display:flex;gap:24px}
+  .navlinks a{font-family:var(--mono);font-size:13px;color:var(--muted);transition:color .15s}
+  .navlinks a:hover{color:var(--red-bright)}
+  .navlinks a.active{color:var(--text)}
+  @media(max-width:760px){.navlinks{display:none}}
+
+  main{flex:1;padding:clamp(40px,7vw,80px) clamp(20px,5vw,64px)}
+  .container{max-width:760px;margin:0 auto;width:100%}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red-bright);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--red)}
+  h1{font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+  .lede{color:var(--muted);font-size:17px;max-width:60ch;margin-bottom:8px}
+
+  /* ---- post index ---- */
+  .post-index{margin:40px 0 8px;border-top:1px solid var(--line)}
+  .post-index a{display:flex;gap:18px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--line);transition:background .15s}
+  .post-index a:hover{background:rgba(255,255,255,.015)}
+  .post-index .date{font-family:var(--mono);font-size:12.5px;color:var(--faint);flex:none;width:88px}
+  .post-index .ptitle{font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+  .post-index a:hover .ptitle{color:var(--red-bright)}
+  @media(max-width:560px){.post-index a{flex-direction:column;gap:4px}}
+
+  /* ---- posts ---- */
+  .post{padding:48px 0;border-bottom:1px solid var(--line)}
+  .post:last-child{border-bottom:none}
+  .post-meta{font-family:var(--mono);font-size:12px;color:var(--red-bright);letter-spacing:.06em;margin-bottom:12px}
+  .post h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;letter-spacing:-.02em;margin-bottom:18px}
+  .post h3{font-size:19px;font-weight:600;margin:26px 0 10px;color:var(--text)}
+  .post p{color:#cdcdd5;font-size:16.5px;margin-bottom:18px}
+  .post ul,.post ol{color:#cdcdd5;font-size:16.5px;margin:0 0 18px 22px}
+  .post li{margin-bottom:8px}
+  .post a{color:var(--red-bright);border-bottom:1px solid var(--red-dim,#7e1622)}
+  .post strong{color:var(--text)}
+  .post blockquote{border-left:2px solid var(--red);padding:4px 0 4px 18px;margin:0 0 18px;color:var(--muted)}
+  .post code{font-family:var(--mono);font-size:.9em;background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+  .post pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;overflow:auto;margin-bottom:18px}
+  .post pre code{border:none;padding:0;background:none}
+  mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden;padding:6px 0;margin:6px 0 20px}
+  .backlink{display:inline-block;margin-top:40px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+  .backlink:hover{color:var(--red-bright)}
+
+  footer{text-align:center;padding:30px 20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint)}
+  footer .red{color:var(--red)}
+  footer a:hover{color:var(--red-bright)}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="index.html" class="brand">han_huang<span class="dot">.</span></a>
+  <div class="navlinks">
+    <a href="index.html#research">Research</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#experience">Education</a>
+    <a href="photography.html">Photography</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <div class="eyebrow">Notes</div>
+    <h1>Blog</h1>
+    <p class="lede">Occasional physics insights, derivations I find elegant, and lecture notes — mostly condensed matter, many-body theory, and computation.</p>
+
+    <!-- ============ POST INDEX ============
+         To add a post: (1) add an <a> line here, and
+         (2) copy an <article> block below. Newest on top. -->
+    <div class="post-index">
+      <a href="#2026-06-welcome">
+        <span class="date">Jun 2026</span>
+        <span class="ptitle">Starting a notes blog</span>
+      </a>
+    </div>
+
+    <!-- ============ POSTS (newest first) ============ -->
+
+    <!-- ---- POST TEMPLATE (copy this block for a new post) ----
+    <article id="YYYY-MM-slug" class="post">
+      <div class="post-meta">MONTH DD, YYYY · topic</div>
+      <h2>Your title</h2>
+      <p>Body text. Inline math like $E = \hbar\omega$ and display math:</p>
+      $$ \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}. $$
+      <p>More text...</p>
+    </article>
+    -->
+
+    <article id="2026-06-welcome" class="post">
+      <div class="post-meta">June 16, 2026 · note</div>
+      <h2>Starting a notes blog</h2>
+      <p>I&rsquo;ll use this space to jot down short physics insights, derivations I find elegant, and notes from courses I teach or take. Expect topics around condensed matter physics, many-body theory, electron&ndash;phonon coupling, and the computational methods I use day to day.</p>
+      <p>Equations render with LaTeX, so I can write things inline like the acoustic phonon dispersion $\omega_{\mathbf q} = c_s\,|\mathbf q|$, or set them off as display math &mdash; for instance the Kubo formula for the conductivity,</p>
+      $$ \sigma_{\alpha\beta}(\omega) = \frac{1}{\hbar V}\int_0^{\infty}\!\! dt\, e^{i\omega t}\!\int_0^{\beta}\!\! d\lambda\,\big\langle J_\beta(0)\,J_\alpha(t + i\hbar\lambda)\big\rangle . $$
+      <p>First real note coming soon.</p>
+    </article>
+
+    <a href="index.html" class="backlink">← back to main</a>
+  </div>
+</main>
+
+<footer>
+  © 2026 Han Huang <span class="red">●</span> <a href="index.html">han_huang.</a>
+</footer>
+
+</body>
+</html>
