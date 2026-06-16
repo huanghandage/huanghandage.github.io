@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Han Huang · Photography</title>
+<meta name="description" content="Photography by Han Huang — film and black-and-white work.">
+<style>
+  :root{
+    --bg:#0c0c0e;--surface:#16161a;--line:#2a2a32;--text:#e9e9ec;--muted:#9a9aa6;--faint:#6c6c78;
+    --red:#d3243b;--red-bright:#ef4358;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--red);color:#fff}
+  nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(20px,5vw,64px);background:rgba(12,12,14,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:.02em}
+  .brand .dot{color:var(--red)}
+  .navlinks{display:flex;gap:26px}
+  .navlinks a{font-family:var(--mono);font-size:13px;color:var(--muted);transition:color .15s}
+  .navlinks a:hover{color:var(--red-bright)}
+  .navlinks a.active{color:var(--text)}
+  @media(max-width:720px){.navlinks{display:none}}
+
+  main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:clamp(60px,12vh,140px) clamp(20px,5vw,64px)}
+  .grain{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:
+      radial-gradient(circle at 25% 35%,rgba(211,36,59,.06),transparent 45%),
+      linear-gradient(transparent 0,transparent calc(100% - 1px),rgba(211,36,59,.05) 100%),
+      linear-gradient(90deg,transparent 0,transparent calc(100% - 1px),rgba(211,36,59,.05) 100%);
+    background-size:auto,46px 46px,46px 46px;
+    mask-image:radial-gradient(ellipse 70% 70% at 50% 45%,#000 25%,transparent 80%)}
+  .wrap{position:relative;z-index:2;text-align:center;max-width:720px}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red-bright);margin-bottom:22px;display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--red)}
+  h1{font-size:clamp(44px,8vw,84px);font-weight:800;letter-spacing:-.035em;line-height:.98;margin-bottom:22px}
+  h1 .accent{color:var(--red)}
+  .lede{color:var(--muted);font-size:17px;max-width:48ch;margin:0 auto 16px}
+  .tag{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em}
+
+  .frames{display:flex;gap:16px;justify-content:center;margin-top:46px;flex-wrap:wrap}
+  .frame{width:clamp(120px,22vw,170px);aspect-ratio:4/5;border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,var(--surface),rgba(22,22,26,.2));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .frame::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 9px,rgba(211,36,59,.04) 9px,rgba(211,36,59,.04) 10px)}
+  .frame span{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.16em}
+  .frame:nth-child(2){transform:translateY(-14px)}
+
+  footer{text-align:center;padding:30px 20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--faint)}
+  footer .red{color:var(--red)}
+  footer a:hover{color:var(--red-bright)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="brand">han_huang<span class="dot">.</span></a>
+  <div class="navlinks">
+    <a href="index.html#research">Research</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#experience">Education</a>
+    <a href="photography.html" class="active">Photography</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+  <div class="grain"></div>
+  <div class="wrap">
+    <div class="eyebrow">Film · Black &amp; White</div>
+    <h1>Photo<span class="accent">graphy</span></h1>
+    <p class="lede">A gallery of my film and black-and-white photography.</p>
+    <p class="tag">Coming soon — check back shortly.</p>
+    <div class="frames">
+      <div class="frame"><span>SOON</span></div>
+      <div class="frame"><span>SOON</span></div>
+      <div class="frame"><span>SOON</span></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Han Huang <span class="red">●</span> <a href="index.html">← back to main</a>
+</footer>
+
+</body>
+</html>
