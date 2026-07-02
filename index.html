@@ -126,6 +126,10 @@
   /* ---------- research ---------- */
   .focus-grid{display:flex;flex-direction:column;gap:18px;margin-top:40px}
   .cardfig{flex:none;width:clamp(220px,32%,340px);height:auto;max-height:230px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin:0}
+  .cardgifs{flex:none;width:clamp(220px,34%,320px);display:flex;flex-direction:column;gap:14px}
+  .cardgifs figure{margin:0}
+  .cardgifs img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#0d0d0f}
+  .cardgifs figcaption{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:center;margin-top:6px;letter-spacing:.04em}
   .card{
     background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px clamp(24px,4vw,40px);
     transition:border-color .18s,transform .18s;position:relative;overflow:hidden;
@@ -138,7 +142,7 @@
   .card .num{font-family:var(--mono);font-size:12px;color:var(--red);letter-spacing:.1em}
   .card h3{font-size:21px;margin:8px 0 12px;letter-spacing:-.015em}
   .card p{color:#c3c3cd;font-size:15.5px;line-height:1.66;max-width:64ch}
-  @media(max-width:680px){.card{flex-direction:column;align-items:stretch}.cardfig{width:100%;max-width:400px;max-height:none}}
+  @media(max-width:680px){.card{flex-direction:column;align-items:stretch}.cardfig{width:100%;max-width:400px;max-height:none}.cardgifs{width:100%;max-width:420px}}
   .research-body p{margin-bottom:18px;font-size:16.5px;color:#c7c7d0}
   .research-body strong{color:var(--text);font-weight:600}
 
@@ -337,9 +341,12 @@
     <div class="card-text">
       <div class="num">03</div>
       <h3>Superconducting qubits</h3>
-      <p>I model nonequilibrium quasiparticle–phonon dynamics in superconductors from first principles, using Keldysh / Kadanoff–Baym formalism to follow how energy flows between Cooper pairs, quasiparticles, and phonons. The aim is an end-to-end predictive model of phonon-mediated quasiparticle poisoning (a leading decoherence channel in superconducting qubits), chaining energy deposition, phonon transport, and many-body dynamics.</p>
+      <p>I model nonequilibrium quasiparticle–phonon dynamics in superconducting qubits from first principles, chaining five distinct physical stages into one predictive pipeline for phonon-mediated quasiparticle poisoning, a leading decoherence channel with no existing end-to-end ab initio treatment. The chain follows the real energy pathway: a photon ionizes electrons in the substrate; those hot electrons thermalize by emitting phonons; the resulting nonequilibrium phonon population undergoes transport governed by temperature-dependent anharmonic decay, isotope, and boundary scattering; phonons then cross the substrate–superconductor interface, where acoustic mismatch and interfacial disorder set mode-resolved transmission and reflection, the dominant bottleneck that continuum Kapitza treatments miss; and the transmitted phonon flux drives coupled nonequilibrium dynamics among Cooper pairs, quasiparticles, and phonons, exchanging energy self-consistently rather than at a fixed poisoning rate. Each stage hands a physically resolved, non-equilibrium distribution to the next, so the final poisoning rate traces back to microscopic material parameters rather than a fit T<sub>1</sub>, making the model predictive across materials and mathematically demanding, unifying transport theory, quantum many-body dynamics, and interfacial scattering in one energy-conserving framework.</p>
     </div>
-    <img class="cardfig" src="https://ztgroup.org/wp-content/uploads/2024/02/screen-shot-2024-02-20-at-1.43.41-pm.png?w=420" alt="Superconducting qubits figure" loading="lazy">
+    <div class="cardgifs">
+      <figure><img src="al_qp.gif" alt="Al film quasiparticle-density animation" loading="lazy"><figcaption>Al film — QP density</figcaption></figure>
+      <figure><img src="nb_qp.gif" alt="Nb film quasiparticle-density animation" loading="lazy"><figcaption>Nb film — QP density</figcaption></figure>
+    </div>
   </div>
   <div class="card">
     <div class="card-text">
